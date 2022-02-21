@@ -50,7 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(invalidLoginHandler)
                 .and().authorizeRequests().antMatchers("/security/generate-token/**", "/security/live")
-                .permitAll().anyRequest().authenticated();
+                .permitAll()
+                .anyRequest().authenticated();
         httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
