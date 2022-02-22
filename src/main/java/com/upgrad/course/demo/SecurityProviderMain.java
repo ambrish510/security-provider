@@ -25,8 +25,9 @@ public class SecurityProviderMain {
     private void initialSetup(UserRepo userRepo) {
         User user = new User("normal-user@abc.com", "$2y$12$LQOfAEPJcdbE0Ko5JBETnOsI1O7fLYYqB5XnASfjZTLYRR2FIZQ8S", "ROLE_USER");
         User admin = new User("admin-user@abc.com", "$2y$12$23JC573SCMFvChDCo5O/L.scweeGWDV0ikQ.YpfF8wrDA8d1ojAgG", "ROLE_ADMIN");
-
+        User doctor = new User("doctor-user@abc.com", "$2y$12$23JC573SCMFvChDCo5O/L.scweeGWDV0ikQ.YpfF8wrDA8d1ojAgG", "ROLE_DOCTOR");
         userRepo.save(user);
         userRepo.save(admin);
+        userRepo.save(doctor);
     }
 }
