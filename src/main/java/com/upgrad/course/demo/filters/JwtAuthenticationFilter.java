@@ -10,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,18 +29,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
-        try{
+        try {
             String jwt = req.getHeader("Authorization");
-            if(!StringUtils.isEmpty(jwt) && tokenProvider.validateToken(jwt)) {
+            if (!StringUtils.isEmpty(jwt) && tokenProvider.validateToken(jwt)) {
                 LOGGER.info("Token is valid! Checking Roles");
                 String userNameInToken = tokenProvider.getUserNameFromToken(jwt);
                 UserPrincipal userPrincipal = userDetailsServiceImpl.loadUserByUsername(userNameInToken);
-                LOGGER.info("Authorities: "+userPrincipal.getAuthorities());
+                LOGGER.info("Authorities: " + userPrincipal.getAuthorities());
                 UsernamePasswordAuthenticationToken authenticationToken =
                         new UsernamePasswordAuthenticationToken(userPrincipal, null, userPrincipal.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             LOGGER.error("Failed to validate the token and/or set authentication token in security context", ex);
         }
 

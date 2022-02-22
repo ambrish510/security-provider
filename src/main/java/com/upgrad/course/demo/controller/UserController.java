@@ -2,7 +2,6 @@ package com.upgrad.course.demo.controller;
 
 import com.upgrad.course.demo.entity.User;
 import com.upgrad.course.demo.model.JwtTokenRequest;
-import com.upgrad.course.demo.model.JwtTokenResponse;
 import com.upgrad.course.demo.model.UserPrincipal;
 import com.upgrad.course.demo.service.TokenProvider;
 import com.upgrad.course.demo.service.UserService;
@@ -43,7 +42,7 @@ public class UserController {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(tokenRequest.getUsername(), tokenRequest.getPassword())
         );
-        String token = tokenProvider.generateToken((UserPrincipal)authentication.getPrincipal());
+        String token = tokenProvider.generateToken((UserPrincipal) authentication.getPrincipal());
         LOGGER.info("Token generated {}", token);
         return ResponseEntity.ok(token);
     }

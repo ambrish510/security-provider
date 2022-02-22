@@ -10,13 +10,10 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * Security Provider using jwt token
- *
  */
 @SpringBootApplication
-public class SecurityProviderMain
-{
-    public static void main( String[] args )
-    {
+public class SecurityProviderMain {
+    public static void main(String[] args) {
         SpringApplication.run(SecurityProviderMain.class, args);
     }
 
