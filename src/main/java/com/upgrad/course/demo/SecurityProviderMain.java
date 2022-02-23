@@ -5,6 +5,7 @@ import com.upgrad.course.demo.repository.UserRepo;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Bean;
  * Security Provider using jwt token
  */
 @SpringBootApplication
+@EnableAutoConfiguration
 public class SecurityProviderMain {
     public static void main(String[] args) {
         SpringApplication.run(SecurityProviderMain.class, args);
