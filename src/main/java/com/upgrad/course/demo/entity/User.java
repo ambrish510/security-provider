@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "user", schema = "upgrad")
+@Table(name = "user")
 public class User {
 
     @Id
